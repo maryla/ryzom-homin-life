@@ -12,9 +12,8 @@
 		
 		$text = $aTxt;
 
-		$fontfile="../../../assets/fonts/".strtolower($aFont).".ttf";
+		$fontfile="../assets/fonts/".strtolower($aFont).".ttf";
 		
-		error_log($fontfile);
 		$size = $aSize;
 		$fontangle = 0;
 		$textcolor = "000033";

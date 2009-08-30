@@ -21,7 +21,7 @@ defined('_JEXEC') or die('Restricted access');
 
 <h1 class="ryzom-homin-name">
 	<img title="<?php echo  $this->row->_Homin->getName(); ?>" alt="<?php echo  $this->row->_Homin->getName(); ?>"
-	src="<?php echo $this->baseurl; ?>/components/com_ryzomlife/views/ryzomlife/tmpl/generate_image.php?ur=<?php echo $this->row->_Homin->getRace()?>&ut=<?php echo $this->row->_Homin->getName()?>&us=40" />
+	src="<?php echo $this->baseurl; ?>/components/com_ryzomlife/models/generate_image.php?ur=<?php echo strtolower($this->row->_Homin->getRace())?>&ut=<?php echo $this->row->_Homin->getName()?>&us=40" />
 </h1>
 <span class="ryzom-homin-title"><?php echo  $this->row->_Homin->getTitle();?></span>
 <?php if (($this->row->_Homin->getGuild()!=null)) : ?>

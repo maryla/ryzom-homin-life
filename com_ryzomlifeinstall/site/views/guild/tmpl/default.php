@@ -9,7 +9,7 @@
 			
 			<h1 class="ryzom-homin-name">
 			<img title="<?php echo  $this->row->_Guild->getName(); ?>" alt="<?php echo  $this->row->_Guild->getName(); ?>"
-			src="<?php echo $this->baseurl; ?>/components/com_ryzomlife/views/ryzomlife/tmpl/generate_image.php?ur=<?php echo $this->row->_Guild->getRace()?>&ut=<?php echo $this->row->_Guild->getName()?>&us=40" />
+			src="<?php echo $this->baseurl; ?>/components/com_ryzomlife/models/generate_image.php?ur=<?php echo strtolower($this->row->_Guild->getRace())?>&ut=<?php echo $this->row->_Guild->getName()?>&us=40" />
 			</h1>
 			<span><?php echo $this->row->_Guild->getRace();?></span>
 		</div>
