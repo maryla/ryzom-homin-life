@@ -389,7 +389,7 @@ a.tooltip ul{
 .ryzom-homin-inventories ul{
 	padding:0;
 }
-ul.menu li{
+.ryzom ul.menu li{
     display:inline;
 	cursor:pointer;
 }
