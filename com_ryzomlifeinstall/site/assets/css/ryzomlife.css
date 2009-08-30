@@ -1,0 +1,475 @@
+div.ryzom h3{
+	color:#0c292e;
+	padding-left:2px;
+	font-size:1.4em;
+}
+
+hr.clear{
+	height:0;
+	clear:both;
+	border:0;
+}
+.ptl, .ptr,.pbl,.pbr{
+	background-image:url(../dressing/topleft2.png);
+	background-repeat:no-repeat;
+	display:block;
+	height:10px;
+	margin-top:-1px;
+	position:absolute;
+	width:17px;
+}
+
+em.pbl2 {
+	background-image:url(../dressing/bottomleft.gif);
+	background-position:5px 0;
+	right:0;
+	top:0;
+}
+em.pbr2 {
+	background-image:url(../dressing/bottomright.gif);
+	background-position:5px 0;
+	right:0;
+	top:0;
+}
+em.ptr {
+	background-image:url(../dressing/topright.gif);
+	background-position:5px 0;
+	right:0;
+	top:0;
+}
+.ryzom-main{
+	padding: 0px 25px;
+	border-right:1px solid #05B7C5;
+}
+.ryzom{
+	background:#0c292e url(../dressing/border_nav.gif) repeat-y scroll 0 17px;
+	cursor:default;
+	position:relative;
+	border-top:1px solid #05b7c5;
+	color:white;
+	width:780px;
+}
+
+/*************************** Header *********************/
+div.ryzom-homin-header img#img-race{
+float:left;
+}
+div.ryzom-homin-header{
+	margin-bottom:20px;
+}
+div.ryzom-homin-header h1{
+	margin-bottom:0;
+}
+
+div.ryzom-homin-header h1 img{
+	margin-left : 15px;
+	margin-right:10px;
+	z-index:0;
+	
+}
+div.ryzom-homin-header span{
+	display:block;
+	margin-left:85px;
+	margin-top:5px;
+	z-index:100;
+	color:white;
+	font-family:Georgia,'Times New Roman',Times,serif;
+	font-size:1.5em;
+}
+div.ryzom-homin-header img{
+vertical-align:middle;
+}
+/********************************************************/
+div.ryzom-homin-profile{
+	clear:both;
+}
+div.ryzom_homin_left,div.ryzom_homin_middle{
+	float:left;
+	width:30%;
+}
+div.ryzom_homin_middle{
+margin-left:5px;
+}
+div.ryzom_homin_left ul li,div.ryzom_homin_middle  ul li{
+	display:block;
+	
+}
+div.ryzom_homin_left ul li span,div.ryzom_homin_middle ul li span{
+	display:inline;
+	float:right;
+	margin-left:5px;
+}
+
+.ryzom-homin-profile ul.menu {
+padding-left:0;
+
+}
+.ryzom-homin-profile ul.menu li{
+padding-right:30px;
+
+}
+.ryzom-homin-profile ul.menu li a{
+color:white;
+}
+/*********************** PHYS SCORES *********************/
+div.ryzom-scores{
+	text-align:right;
+	
+}
+div.ryzom-scores div{
+	padding-right :20%;
+	height:16px;
+	border:1px solid black;
+}
+div.ryzom-scores span{
+	float:left;
+	margin-left : 5px;
+}
+div.ryzom-homin-hitpoints{
+	background:#B12F06 url(../bar-hitpoint.gif) repeat-x;
+	color:white;
+	text-align:right !important;
+
+}
+div.ryzom-homin-stamina{
+	background:#A2367B url(../bar-stamina.gif) repeat-x;
+	color:white;
+	text-align:right !important;
+}
+div.ryzom-homin-sap{
+	background:#5C8203 url(../bar-sap.gif) repeat-x;
+	color:white;
+	text-align:right !important;
+}
+div.ryzom-homin-focus{
+	background:#6FB9D6 url(../bar-focus.gif) repeat-x;
+	color:white;
+	text-align:right !important;
+}
+
+/*********************** avatar & equipment *********************/
+div.ryzom-homin-avatar{
+background:transparent url(../dressing/fond.png) no-repeat scroll 0 0;
+float:right;
+height:465px;
+
+}
+div.ryzom-homin-avatar img.fond{
+	left:-2px;
+	position:absolute;
+}
+div.ryzom-left-items{
+background:#30434E none repeat scroll 0 0;
+display:block;
+float:left;
+margin-left:3px;
+margin-top:103px;
+}
+
+
+div.ryzom-right-items{
+background:#30434E none repeat scroll 0 0;
+display:block;
+float:left;
+margin-left:16px;
+margin-right:3px;
+margin-top:103px;
+
+}
+div.ryzom-avatar-img{
+	float:left;
+	margin-bottom:0;
+	margin-left:15px;
+	margin-right:0;
+	margin-top:20px;
+}
+
+div.ryzom-left-items div,div.ryzom-right-items div{
+
+}
+div.ryzom-left-items img,div.ryzom-right-items img{
+
+}
+
+/************************** competence ******************/
+
+
+.ryzom-homin-skilltree li.sm{
+	background : transparent url(../icon/job_sm.png) no-repeat;
+	padding-left : 25px;
+	min-height:24px;
+	vertical-align:middle;
+}
+.ryzom-homin-skilltree li.sh{
+	background : transparent url(../icon/job_sh.png) no-repeat;
+	padding-left : 25px;
+	min-height:24px;
+	vertical-align:middle;	
+}
+.ryzom-homin-skilltree li.sc{
+	background : transparent url(../icon/job_sc.png) no-repeat;
+	padding-left : 25px;
+	min-height:24px;	
+	vertical-align:middle;	
+}
+.ryzom-homin-skilltree li.sf{
+	background : transparent url(../icon/job_sf.png) no-repeat;
+	padding-left : 25px;
+	min-height:24px;
+	vertical-align:middle;		
+}
+
+.ryzom-homin-skilltree{
+width:350px;
+}
+
+.ryzom-homin-skilltree ul{
+margin:0;
+padding-left:15px;
+}
+
+.ryzom-homin-skilltree ul li span.value{
+float:right;
+
+}
+.ryzom-homin-skilltree ul li{
+cursor:pointer;
+}
+.ryzom-homin-skilltree ul{
+display:none;
+}
+.ryzom-homin-skilltree ul.racine{
+display:block;
+}
+
+.ryzom-homin-skilltree li.last{
+ color:#FFC34F;
+ cursor:default;
+}
+
+
+
+div.ryzom-homin-skilltree ul.racine{
+	border-left:1px solid #6FB9D6;
+	border-right:1px solid #6FB9D6;
+	padding-right:5px;
+	background:#1E434D;
+	padding-left:2px;
+	padding-right:5px;
+	list-style:none;
+}
+div.ryzom-homin-skilltree div.bottom{
+	background:transparent url(../ryzom-wide-cadre-bas.png) repeat-x left bottom;
+	padding:0 2px 2px 2px;
+	margin: 0px 0px 5px 0px;
+	height:10px;
+
+}
+.ryzom-homin-skilltree{
+	background:transparent url(../ryzom-wide-cadre.png) no-repeat scroll 0 0;
+	width:355px;
+}
+
+div.ryzom-homin-phys-charac ul {
+	background:transparent url(../ryzom-cadre-bas.png) repeat-x scroll left bottom;
+	margin:0 0 5px;
+	padding:0 2px 2px;
+}
+/**************** infobulle ************/
+
+a.tooltip em {
+    display:none;
+}
+a.tooltip:hover {
+    border: 0;
+    position: relative;
+    z-index: 500;
+    text-decoration:none;
+}
+a.tooltip:hover em {
+    font-style: normal;
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: -10px;
+    padding: 5px;
+    color: #fff;
+    border: 1px solid #F0C828;
+    background: #786414;/*ddca00;*/
+
+    width:200px;
+}
+a.tooltip:hover em span {
+    position: absolute;
+    top: -7px;
+    left: 15px;
+    height: 7px;
+    width: 11px;
+    background: transparent url(../infobulle.gif);
+    margin:0;
+    padding: 0;
+    border: 0;
+}
+a.tooltip ul{
+	margin:0;
+	padding:15px;
+	width:100%;
+}
+/************************ cadre *****************************/
+.ryzom-homin-content{
+	margin:5px;
+}
+.ryzom-homin-cadre {
+	background:#1E434D  url(../ryzom-cadre-titre.png) no-repeat scroll 0 0;
+	border : 1px solid #6FB9D6;
+	padding-bottom:10px;
+	min-width:200px;
+}
+.ryzom-homin-cadre ul{
+	padding:0;
+}
+.ryzom-homin-cadre ul.menu li{
+    display:inline;
+	cursor:pointer;
+}
+.ryzom-homin-cadre li a{
+    margin:5px;
+    padding:5px;
+}
+.ryzom-homin-cadre li a.activ,.ryzom-homin-cadre li a:hover{
+	font-weight:bold;
+	border-bottom:3px solid #6FB9D6;
+	color:white;
+	text-decoration:none;
+}
+.ryzom-homin-cadre h3{
+	/*background:transparent url(../ryzom-cadre-titre.png) no-repeat;*/
+	margin-left:5px;
+}
+
+.ryzom-homin-cadre-borders em.ptl{
+	background-image:url(../dressing/light-topleft.gif);
+	background-repeat:no-repeat;
+	float:left;
+	margin-top:0px;
+}
+.ryzom-homin-cadre-borders em.ptr{
+	background-image:url(../dressing/light-topright.gif);
+	background-repeat:no-repeat;
+	display:block;
+	position:relative;
+	float:right;
+	margin-top:0px;
+}
+.ryzom-homin-cadre-borders em.pbl{
+	background-image:url(../dressing/light-bottomleft.gif);
+	background-repeat:no-repeat;
+	display:block;
+	position:relative;
+	float:left;
+	margin-top:-10px;
+}
+.ryzom-homin-cadre-borders em.pbr{
+	background-image:url(../dressing/light-bottomright.gif);
+	background-repeat:no-repeat;
+	display:block;
+	position:relative;
+	float:right;
+	margin-top:-16px;
+	margin-right:-5px;
+}
+
+
+/************************ Inventaire *****************************/
+.ryzom-homin-inventories {
+	background:#1E434D;
+	border : 1px solid #6FB9D6;
+	padding-bottom:10px;
+}
+.ryzom-homin-inventories ul{
+	padding:0;
+}
+ul.menu li{
+    display:inline;
+	cursor:pointer;
+}
+.ryzom-homin-inventories li a{
+    margin:5px;
+    padding:5px;
+}
+.ryzom ul.menu li a.activ,.ryzom ul.menu li a:hover{
+	font-weight:bold;
+	border-bottom:3px solid #6FB9D6;
+	color:white;
+	text-decoration:none;
+}
+.ryzom-homin-inventories h3{
+	background:transparent url(../ryzom-cadre-titre.png) no-repeat;
+}
+.ryzom-homin-inventories div,div.ryzom_homin_middle{
+	display:none;
+}
+.ryzom-homin-inventories div.inv-bag{
+	display:block;
+}
+
+.ryzom-homin-inventories-borders em.ptl{
+	background-image:url(../dressing/light-topleft.gif);
+	background-repeat:no-repeat;
+	display:block;
+	position:relative;
+	float:left;
+	margin-top:0px;
+}
+.ryzom-homin-inventories-borders em.ptr{
+	background-image:url(../dressing/light-topright.gif);
+	background-repeat:no-repeat;
+	display:block;
+	position:relative;
+	float:right;
+	margin-top:0px;
+}
+.ryzom-homin-inventories-borders em.pbl{
+	background-image:url(../dressing/light-bottomleft.gif);
+	background-repeat:no-repeat;
+	display:block;
+	position:relative;
+	float:left;
+	margin-top:-10px;
+}
+.ryzom-homin-inventories-borders em.pbr{
+	background-image:url(../dressing/light-bottomright.gif);
+	background-repeat:no-repeat;
+	display:block;
+	position:relative;
+	float:right;
+	margin-top:-16px;
+	margin-right:-5px;
+}
+
+.ryzom-homin-skilltree em ul li{
+	display:block;
+}
+
+/**************** guild ******************/
+#guild-middle{
+display:block !important;
+}
+#guild-middle a{
+	border:0;
+	color:white;
+	font-weight:bold;
+}
+#guild-middle a:hover{
+	color:#6FB9D6;
+
+}
+.guild-icon img {
+float:left;
+margin-right:5px;
+
+}
+div.ryzom div.header{
+	margin-bottom:40px;
+
+}

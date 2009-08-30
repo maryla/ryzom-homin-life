@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>Homin position</title>
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAQd3dU7bPN1x08PFDA9Ck9xQ1ruV7fLhpQ0nSechZShUTjTeD7RQOHYC8IoqpThYOEvRKmJy7AHaXxg" type="text/javascript"></script>
+  	</head>
+
+	<style>
+		#coordinate input{
+			border:0;
+		}
+		#map{
+			background-color:#D0E2EE !important;
+			width:100%; height:90%;
+		}	
+			html { overflow:hidden; height:100%; } 
+			body { height:100%; margin:0; }
+		
+		
+	</style>
+  <body onunload="GUnload()">
+
+    <div id="map"></div>
+
+     <script type="text/javascript">
+    //<![CDATA[
+
+    if (GBrowserIsCompatible()) {
+      	var gMapImageWidth=2048;
+      	var gMapImageHeight=2048;
+		var	gZoom=3;
+		var gScale=1;
+
+		/** ======= @desc Mektoub icon	*/
+		var mektoubIcon= new GIcon();
+		mektoubIcon.image = 'markers/image.png';
+		mektoubIcon.shadow = 'markers/shadow.png';
+		mektoubIcon.iconSize = new GSize(20,20);
+		mektoubIcon.shadowSize = new GSize(30,20);
+		mektoubIcon.iconAnchor = new GPoint(10,20);
+		mektoubIcon.infoWindowAnchor = new GPoint(10,0);
+		mektoubIcon.printImage = 'markers/printImage.gif';
+		mektoubIcon.mozPrintImage = 'markers/mozPrintImage.gif';
+		mektoubIcon.printShadow = 'markers/printShadow.gif';
+		mektoubIcon.transparent = 'markers/transparent.png';
+		mektoubIcon.imageMap = [13,0,15,1,15,2,15,3,15,4,15,5,15,6,16,7,18,8,19,9,19,10,19,11,19,12,19,13,19,14,19,15,19,16,19,17,19,18,19,19,0,19,0,18,0,17,0,16,0,15,0,14,0,13,0,12,0,11,0,10,0,9,0,8,0,7,0,6,1,5,1,4,1,3,2,2,3,1,7,0];
+	
+		/** ======= @desc Initialisation of continents coordinates	*/
+		gContinents= {
+					"f": {"l":16000,"r":20300,"t":-23840,"b":-27000,"ml":418,"mr":1058,"mt":85,"mb":554},
+					"m": {"l":369,"r":6200,"t":-364,"b":-7816,"ml":1076,"mr":1951,"mt":64,"mb":1134},
+					"t": {"l":13771,"r":19976,"t":-29449,"b":-34834,"ml":1090,"mr":1986,"mt":1187,"mb":1968},
+					"z": {"l":6882,"r":12317,"t":-1070,"b":-5755,"ml":31,"mr":817,"mt":1298,"mb":1978},
+					"si":{"l":2589,"r":3789,"t":-9816,"b":-11211,"ml":94,"mr":264,"mt":1022,"mb":1222},
+					"nx":{"l":7880,"r":9705,"t":-6130,"b":-8228,"ml":1142,"mr":1450,"mt":810,"mb":1152},
+					"ro":{"l":5514,"r":7295,"t":-9690,"b":-16870,"ml":804,"mr":1070,"mt":581,"mb":1657},
+					"ta":{"l":224,"r":2989,"t":-13153,"b":-15778,"ml":321,"mr":749,"mt":714,"mb":1121},
+					"gi":{"l":547,"r":1540,"t":-9820,"b":-11291,"ml":1201,"mr":1345,"mt":553,"mb":745}
+				}
+	
+		/** ======= @desc Get url parameter
+		* @param aParamName:string. Name of the paremeter
+		* @return string value of the parameter if exists
+		*/
+		function getUrlParameter( aParamName )
+		{
+		  aParamName = aParamName .replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+		  var lRegexS = "[\\?&]"+aParamName +"=([^&#]*)";
+		  var lRegex = new RegExp( lRegexS );
+		  var lResults = lRegex.exec( window.location.href );
+		  if( lResults == null )
+		    return "";
+		  else
+		    return lResults[1];
+		}
+	
+		/** ======= @desc Get the right continent from homin position
+		* @param aX:float. x position of the homin
+		* @param aY:float. y position of the homin
+		* @return i:int. index of the continent in the global table
+		*/
+		function getContinentFromHominPosition(aX,aY){
+			for (i in gContinents){
+					
+				if (	(Math.abs(aX) >= Math.abs(gContinents[i]["l"]) && Math.abs(aX) <= Math.abs(gContinents[i]["r"]))
+				    &&	(Math.abs(aY) >= Math.abs(gContinents[i]["t"]) && Math.abs(aY) <= Math.abs(gContinents[i]["b"]))
+				){
+					
+					return i;	
+				}
+	
+			}
+		}
+		/** ======= @desc Get the right continent from mouse cursor position
+		* @param aX:float. x position of the mouse cursor
+		* @param aY:float. y position of the mouse cursor
+		* @return i:int. index of the continent in the global table
+		*/
+		function getContinentFromMouseCursorPosition(aX,aY){
+			for (i in gContinents){
+					
+				if (	(Math.abs(aX) >= Math.abs(gContinents[i]["ml"]) && Math.abs(aX) <= Math.abs(gContinents[i]["mr"]))
+				    &&	(Math.abs(aY) >= Math.abs(gContinents[i]["mt"]) && Math.abs(aY) <= Math.abs(gContinents[i]["mb"]))
+				){
+					
+					return i;	
+				}
+	
+			}
+		}	
+	
+		/** ======= @desc Convert homin position to google map position 
+		* @param aPositionX:float. Ryzom X position
+		* @param aPositionY:float. Ryzom Y position
+		* @return GPoint google map position of the homin
+		*/
+		function setMyPositionOnMap(aPositionX,aPositionY){
+			var lContIdx = getContinentFromHominPosition(aPositionX,aPositionY);
+			if (! lContIdx == ""){
+				var lCoefAtysX = (gContinents[lContIdx]["l"]-aPositionX)/(gContinents[lContIdx]["l"]-gContinents[lContIdx]["r"]);
+				var lCoefAtysY = (gContinents[lContIdx]["t"]-aPositionY)/(gContinents[lContIdx]["t"]-gContinents[lContIdx]["b"]);
+	
+				var lMapX = gContinents[lContIdx]["ml"]+(lCoefAtysX * (gContinents[lContIdx]["mr"]-gContinents[lContIdx]["ml"]));
+				var lMapY = gContinents[lContIdx]["mt"]+(lCoefAtysY * Math.abs((gContinents[lContIdx]["mt"]-gContinents[lContIdx]["mb"])));
+				return new GPoint(lMapX,lMapY);
+			}else return null;
+	
+		}
+		function getPixelPointToRyzomPoint(aPixelPoint){
+			var lContIdx = getContinentFromMouseCursorPosition(aPixelPoint.x,aPixelPoint.y);
+	
+			if (! lContIdx == ""){
+				var lCoefMapX = (gContinents[lContIdx]["ml"]-aPixelPoint.x)/(gContinents[lContIdx]["ml"]-gContinents[lContIdx]["mr"]);
+				var lCoefMapY = (gContinents[lContIdx]["mt"]-aPixelPoint.y)/(gContinents[lContIdx]["mt"]-gContinents[lContIdx]["mb"]);		
+				
+				var lMapX = gContinents[lContIdx]["l"]+(lCoefMapX * (gContinents[lContIdx]["r"]-gContinents[lContIdx]["l"]));
+				var lMapY = gContinents[lContIdx]["t"]+(lCoefMapY * Math.abs((gContinents[lContIdx]["t"]-gContinents[lContIdx]["b"])));
+				return new GPoint(lMapX ,lMapY);
+			}else return null;
+	
+			
+		}
+
+	    var map = new GMap2(document.getElementById("map"));
+	      
+		/** ======= @desc Add copyright ======= **/
+	    var copyright = new GCopyright(1,
+	          new GLatLngBounds(new GLatLng(54,-3),new GLatLng(54,-3) ),
+	          2, "Homin position");
+	    var copyrightCollection = new GCopyrightCollection('Ryzom life :');
+	      copyrightCollection.addCopyright(copyright);
+
+	    /** ======= @desc Custom Tile name function ======= **/
+	    CustomGetTileUrl=function(a,b){
+			var zoom=b;
+			var name="tile/tile-"+a.x+"-"+a.y+"-"+zoom+".jpg";
+		
+	       return name;
+	      }
+
+
+		/** ======= @desc Create the GTileLayer and apply the custom tile url ======= **/      
+	      var tilelayers = [new GTileLayer(copyrightCollection,1,3)];
+	      tilelayers[0].getTileUrl = CustomGetTileUrl;
+	
+	      var marker;
+	      var latlng;
+	
+	      	/** ======= @desc maker function in order to display homin position ======= **/
+	      function createMarker(point,aMarker){
+			var lPixelPoint =  map.getCurrentMapType().getProjection().fromLatLngToPixel(point,gZoom);
+	
+		  	var lRyzomPoint=getPixelPointToRyzomPoint(lPixelPoint);
+	
+			if (aMarker==1)
+		  		lMarker= new GMarker(point,{clickable: true, draggable: false, bouncy: false, bounceGravity: 0.2, title: "X : "+Math.round(lRyzomPoint.x*100)/100 +" Y : "+Math.round(lRyzomPoint.y*100)/100});
+			else
+				lMarker= new GMarker(point,{icon:mektoubIcon, clickable: true, draggable: false, bouncy: false, bounceGravity: 0.2, title: "X : "+Math.round(lRyzomPoint.x*100)/100 +" Y : "+Math.round(lRyzomPoint.y*100)/100});
+	  		map.addOverlay(lMarker);
+	  	
+		}
+
+	
+      	/** ======= @desc Add mousemove listener in order to display coordinates ======= **/
+		var gLastPoint;
+		GEvent.addListener(map, "mousemove", function(point) {
+			var lPixelPoint =  map.getCurrentMapType().getProjection().fromLatLngToPixel(point,gZoom);
+	
+		  	var lRyzomPoint=getPixelPointToRyzomPoint(lPixelPoint);
+	
+			//document.getElementById("coord").value= Math.round(point.lat()*100)/100+" / "+ Math.round(point.lng()*100)/100;
+			//document.getElementById("coordp").value= lPixelPoint ;
+			if (lRyzomPoint != null){
+				document.getElementById("coordax").value= Math.round(lRyzomPoint.x*100)/100;
+				document.getElementById("coorday").value=Math.round(lRyzomPoint.y*100)/100;
+			} else {
+				document.getElementById("coordax").value="NaN";
+				document.getElementById("coorday").value="NaN";
+			}
+	
+			gLastPoint= point;
+			
+	
+		});
+	
+	
+     	
+      	/** ======= @desc Create the GMapType and center the map on the homin position ======= **/
+	    var custommap = new GMapType(tilelayers, new GMercatorProjection(gZoom+1), "Old OS");
+	    map.addMapType(custommap);
+		var ovcontrol = new GOverviewMapControl(new GSize(200,200)); 
+	     ovcontrol.setMapType(custommap);
+	     map.addControl(ovcontrol);
+	
+		var gX=getUrlParameter("x");
+		var gY=getUrlParameter("y");
+		 
+		var maposition=setMyPositionOnMap(gX,gY);
+
+		lCenterPoint=new GPoint(gMapImageWidth/2,gMapImageHeight/2);	
+		map.setCenter(map.getCurrentMapType().getProjection().fromPixelToLatLng(maposition,gZoom),gZoom,custommap);
+		
+	
+		var lLatLngPoint = map.getCurrentMapType().getProjection().fromPixelToLatLng(maposition,gZoom);
+		createMarker(lLatLngPoint,1);
+	
+		
+	    }//end if compatible
+	
+	    
+	    // display a warning if the browser was not compatible
+	    else {
+	      alert("Sorry, the Google Maps API is not compatible with this browser");
+	    }
+
+	
+	    //]]>
+	    </script>
+<div id="coordinate" name="coordinate" >
+<!--G : <input type="text" value="" id="coord" name="coord"/>
+	P : <input type="text" value="" id="coordp" name="coordp"/> -->
+	Atys X : <input type="text" value="" id="coordax" name="coordax" /><br/>
+	Atys Y : <input type="text" value="" id="coorday" name="coorday" />
+
+
+</div>
+</body>
+
+</html>
+
+
+
